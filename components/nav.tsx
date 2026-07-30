@@ -29,7 +29,7 @@ export default function Nav({ current }: { current: string }) {
             </Link>
           ))}
           <a
-            href="https://github.com/fritzschoff/hbar402"
+            href="https://github.com/OkeyAmy/hbar402"
             className="text-muted-soft transition-colors hover:text-muted"
           >
             source
