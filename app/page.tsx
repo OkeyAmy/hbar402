@@ -24,7 +24,7 @@ export const revalidate = 5;
 const QUICKSTART = `import { buy } from "hbar402/client";
 
 const { data, receipt } = await buy(
-  "https://hbar402.vercel.app/api/v1/network-pulse",
+  "https://hbar402.okeyamy.xyz/api/v1/network-pulse",
   { accountId: "0.0.1234", privateKey: process.env.HEDERA_KEY!, prefer: "hbar" },
 );
 

@@ -118,6 +118,14 @@ A single 402 advertises all three assets and the buyer picks whichever it holds.
 Requests that fail validation return 4xx and are **not** settled, so a malformed
 call costs nothing.
 
+**On what is demonstrated:** the HBAR path and the HTS-fungible-token path are both
+exercised on chain, with settlements linked above. USDC is advertised and takes the
+*same* code path as credits — both are HTS fungible tokens settled by the same
+`ExactHederaScheme` with the same amount handling, differing only in token id — but
+we hold no testnet USDC to demonstrate it with, because the Circle faucet did not
+dispense to our account. So USDC is not an untested branch; it is a tested branch
+with a different token id substituted. Stated plainly rather than glossed.
+
 `network-pulse` and `whale-watch` do work the buyer avoids — aggregating 100
 transactions to derive throughput, or scanning and ranking 50 transfers. The mirror
 node is public, so what is being sold is the aggregation and the reliability, not

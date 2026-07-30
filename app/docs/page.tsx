@@ -41,7 +41,7 @@ const payingFetch = wrapFetchWithPaymentFromConfig(fetch, {
     reqs.find((r) => r.asset === "0.0.0") ?? reqs[0],
 });
 
-const res = await payingFetch("https://hbar402.vercel.app/api/v1/network-pulse");
+const res = await payingFetch("https://hbar402.okeyamy.xyz/api/v1/network-pulse");
 const data = await res.json();`;
 
 const RECEIPT = `import { decodePaymentResponseHeader } from "@x402/fetch";
@@ -55,10 +55,10 @@ const settled = decodePaymentResponseHeader(res.headers.get("payment-response")!
 console.log(settled.transaction, settled.payer, settled.success);`;
 
 const CURL = `# Unpaid: returns 402 with the catalog entry and all accepted assets
-curl -i https://hbar402.vercel.app/api/v1/hbar-spot
+curl -i https://hbar402.okeyamy.xyz/api/v1/hbar-spot
 
 # The PAYMENT-REQUIRED header is base64 JSON. Decode it to see the options:
-curl -sD - -o /dev/null https://hbar402.vercel.app/api/v1/hbar-spot \\
+curl -sD - -o /dev/null https://hbar402.okeyamy.xyz/api/v1/hbar-spot \\
   | grep -i '^payment-required:' | cut -d' ' -f2 | base64 -d | jq`;
 
 export default function DocsPage() {
