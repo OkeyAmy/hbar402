@@ -1,0 +1,43 @@
+{
+  "name": "hbar402",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pay-per-query Hedera-native data API. HTTP 402 payments over x402, settling in HBAR or USDC on Hedera testnet.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "spike": "tsx --env-file=.env.local scripts/spike-pay.ts",
+    "buy": "tsx --env-file=.env.local scripts/buy.ts",
+    "hcs:topic": "tsx --env-file=.env.local scripts/create-hcs-topic.ts",
+    "hts:credits": "tsx --env-file=.env.local scripts/create-credits-token.ts",
+    "credits:fund": "tsx --env-file=.env.local scripts/fund-credits.ts",
+    "account:revenue": "tsx --env-file=.env.local scripts/create-revenue-account.ts",
+    "customer": "tsx --env-file=.env.local scripts/reference-customer.ts"
+  },
+  "dependencies": {
+    "@hiero-ledger/sdk": "2.85.0",
+    "@x402/core": "^2.20.0",
+    "@x402/fetch": "^2.20.0",
+    "@x402/hedera": "^2.20.0",
+    "@x402/next": "^2.20.0",
+    "next": "^16.2.6",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.14",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "tailwindcss": "^4.1.14",
+    "tsx": "^4.21.0",
+    "typescript": "^5.6.0"
+  },
+  "engines": {
+    "node": ">=20.9"
+  },
+  "packageManager": "pnpm@10.20.0"
+}

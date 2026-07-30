@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+@theme {
+  /* Ink base with a blue cast, so it reads cooler than a pure black. */
+  --color-bg: #08080f;
+  --color-surface: #0e0e18;
+  --color-surface-2: #14142099;
+  --color-fg: #eceaf5;
+
+  /* Violet is the primary; teal marks settled/success, amber marks pending. */
+  --color-violet: #a679f0;
+  --color-violet-dim: #6d4bab;
+  --color-teal: #5eead4;
+  --color-amber: #fbbf24;
+  --color-danger: #fb7185;
+
+  --color-muted: #9a95b5;
+  --color-muted-soft: #6b6785;
+  --color-border: #23213a;
+  --color-rule: #1b1930;
+}
+
+html,
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-feature-settings: "tnum", "zero", "ss01";
+  font-size: 13.5px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+ * Static hairline dot grid. Deliberately not animated and not grain — this
+ * should read as an instrument panel / schematic, not as film.
+ */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(
+    var(--color-border) 0.5px,
+    transparent 0.5px
+  );
+  background-size: 22px 22px;
+  opacity: 0.5;
+  mask-image: radial-gradient(ellipse 120% 80% at 50% 0%, black 20%, transparent 75%);
+}
+
+main,
+header,
+nav,
+section,
+article,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Display type: geometric sans, tight. The counterpoint to the mono body. */
+.display {
+  font-family: var(--font-display), system-ui, sans-serif;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+/* Bracketed section label — the console motif. */
+.label {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted-soft);
+}
+
+.label::before {
+  content: "[ ";
+  color: var(--color-violet-dim);
+}
+
+.label::after {
+  content: " ]";
+  color: var(--color-violet-dim);
+}
+
+/* Panel — the primary content container. Hairline border, faint inner glow. */
+.panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+}
+
+.panel-lit {
+  box-shadow: inset 0 1px 0 0 #ffffff0a;
+}
+
+/* Numeric readout, for prices and balances. */
+.readout {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Status pips. */
+.pip {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  vertical-align: middle;
+}
+
+.pip-live {
+  background: var(--color-teal);
+  box-shadow: 0 0 0 3px #5eead41f;
+  animation: pip-pulse 2.4s ease-in-out infinite;
+}
+
+.pip-idle {
+  background: var(--color-muted-soft);
+}
+
+@keyframes pip-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.45;
+  }
+}
+
+/* Hairline horizontal rule used between ledger rows. */
+.hair {
+  border-top: 1px solid var(--color-rule);
+}
+
+/* Monospace hash / id, truncated with a fade rather than an ellipsis. */
+.hashish {
+  font-variant-ligatures: none;
+  color: var(--color-muted);
+  word-break: break-all;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.link {
+  color: var(--color-violet);
+  text-decoration: underline;
+  text-decoration-color: var(--color-violet-dim);
+  text-underline-offset: 3px;
+}
+
+.link:hover {
+  color: var(--color-fg);
+  text-decoration-color: var(--color-fg);
+}
+
+::selection {
+  background: var(--color-violet-dim);
+  color: var(--color-fg);
+}
